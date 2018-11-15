@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Pizza</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let pizza of GetMenu()">
+        <th scope="row">{{pizza.id}}</th>
+        <td>{{pizza.name}}</td>
+        <td>{{pizza.price}}</td>
+        <td>
+          <button (click)="AddPizza(pizza.id)" class="btn btn-sm">+</button>
+          <button (click)="RemovePizza(pizza.id)"class="btn btn-sm float-right">-</button>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card float-right bg-light mb-3" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Shopping Cart</h5>
+    <ul *ngFor="let line of order" class="list-group list-group-flush">
+      <li class="list-group-item">{{line.amount}} x {{line.pizza.name}} </li>
+    </ul>
+    <p>Total price: {{totalPrice}}</p>
+    <button (click)="PlaceOrder()" class="btn btn-primary">Place order!</button>
+  </div>
+</div>
